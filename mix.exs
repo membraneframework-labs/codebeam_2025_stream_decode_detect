@@ -30,13 +30,15 @@ defmodule TryingThings.MixProject do
       {:evision, "~> 0.2.0"},
       {:kino_yolo, github: "poeticoding/kino_yolo"},
       {:vix, "~> 0.35"},
+      {:boombox, "~> 0.2.6"}
+
       # {:boombox, github: "membraneframework/boombox", branch: "player"},
-      {:boombox, path: "../../boombox"},
-      {
-        :ex_hls,
-        #  branch: "handle-weird-segment-extensions",
-        github: "membraneframework/ex_hls", branch: "varsill/handle_absolute_urls", override: true
-      }
+      # {:boombox, path: "../../boombox"},
+      # {
+      #   :ex_hls,
+      #   #  branch: "handle-weird-segment-extensions",
+      #   github: "membraneframework/ex_hls", branch: "varsill/handle_absolute_urls", override: true
+      # }
       # {:ex_hls, path: "../../ex_hls", override: true}
 
       # {:dep_from_hexpm, "~> 0.3.0"},

@@ -1,18 +1,13 @@
 defmodule Demos.BoomboxWithYOLO.Elixir do
-  @live_stream_urls %{
-    skyline_webcams: "https://hd-auth.skylinewebcams.com/live.m3u8?a=rud0i6qs0m1a4c11trrsbie6s4",
-    krakow_main_square_1:
-      "https://hoktastream1.webcamera.pl/krakow_cam_9a3b91/krakow_cam_9a3b91.stream/chunks.m3u8",
-    krakow_main_square_2:
-      "https://hoktastream2.webcamera.pl/krakow_cam_702b61/krakow_cam_702b61.stream/chunks.m3u8?nimblesessionid=638026395"
-  }
-
   def demo() do
+    hls_url =
+      "https://hd-auth.skylinewebcams.com/live.m3u8?a=rud0i6qs0m1a4c11trrsbie6s4"
+
     {:ok, gen_server} = __MODULE__.GenServer.start_link()
 
     Task.start_link(fn ->
       Boombox.run(
-        input: @live_stream_urls.skyline_webcams,
+        input: hls_url,
         output: {:stream, video: :image, audio: false}
       )
       |> Enum.each(fn %Boombox.Packet{} = packet ->

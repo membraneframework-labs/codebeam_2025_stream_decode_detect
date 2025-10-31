@@ -1,6 +1,8 @@
 defmodule Demos.BoomboxWithYOLO.Elixir.GenServer do
   use GenServer
 
+  @latency Membrane.Time.second()
+
   def start_link() do
     GenServer.start_link(__MODULE__, parent_process: self())
   end
@@ -23,7 +25,9 @@ defmodule Demos.BoomboxWithYOLO.Elixir.GenServer do
       parent_process: parent_process,
       model: model,
       detection_in_progress?: false,
-      packets_qex: Qex.new()
+      packets_qex: Qex.new(),
+      first_packet_pts: nil,
+      first_packet_monotonic_time: nil
     }
 
     {:ok, state}
@@ -31,6 +35,11 @@ defmodule Demos.BoomboxWithYOLO.Elixir.GenServer do
 
   @impl true
   def handle_cast({:process_image, packet}, state) do
+    state =
+      if state.first_packet_pts == nil,
+        do: handle_first_packet(packet, state),
+        else: state
+
     if not state.detection_in_progress? do
       my_pid = self()
 
@@ -70,5 +79,25 @@ defmodule Demos.BoomboxWithYOLO.Elixir.GenServer do
     state = %{state | detection_in_progress?: false, packets_qex: Qex.new()}
 
     {:noreply, state}
+  end
+
+  def send_buffer(packet, state) do
+    pts_diff = packet.pts - state.first_packet_pts
+    desired_time = state.first_packet_monotonic_time + @latency + pts_diff
+
+    send_after_timeout =
+      (desired_time - Membrane.Time.monotonic_time())
+      |> max(0)
+      |> Membrane.Time.as_milliseconds(:round)
+
+    Process.send_after(state.parent_process, {:processed_packet, packet}, send_after_timeout)
+  end
+
+  defp handle_first_packet(packet, state) do
+    %{
+      state
+      | first_packet_pts: packet.pts,
+        first_packet_monotonic_time: Membrane.Time.monotonic_time()
+    }
   end
 end

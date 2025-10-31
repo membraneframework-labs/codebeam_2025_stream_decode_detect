@@ -15,7 +15,7 @@ defmodule UltralyticsYolo do
       |> Enum.with_index(fn class, idx -> {idx, class} end)
       |> Enum.into(%{})
 
-    {[{_, _, input_shape}], [{_, _, output_shape}]} =
+    {[{_, _, input_shape}], [{_, _, _output_shape}]} =
       Ortex.Native.show_session(model.reference)
 
     # shapes = %{input: List.to_tuple(input_shape), output: List.to_tuple(output_shape)}
@@ -115,7 +115,7 @@ defmodule UltralyticsYolo do
     Nx.backend_transfer(output)
   end
 
-  def postprocess(model, output_nx, scaling_config) do
+  def postprocess(_model, output_nx, scaling_config) do
     prob_threshold = 0.25
     iou_threshold = 0.45
 
