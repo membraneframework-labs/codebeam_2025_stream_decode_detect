@@ -6,7 +6,7 @@ defmodule UltralyticsQueuingModel do
   # @stream_usa "https://videos-3.earthcam.com/fecnetwork/30316.flv/playlist.m3u8"
   # @stream_usa "https://videos-3.earthcam.com/fecnetwork/30316.flv/playlist.m3u8?t=FIls8yQUTSX87Ze99E%2BkIl5pKNHChXU%2BpRnPMbD1uctLu2gJxxqwOFwJmkzeiYFP&td=202510140812"
   # @stream_krk "https://hoktastream1.webcamera.pl/krakow_cam_da9ab3/krakow_cam_da9ab3.stream/chunks.m3u8"
-  @stream_krk "https://hoktastream1.webcamera.pl/krakow_cam_9a3b91/krakow_cam_9a3b91.stream/chunks.m3u8"
+  # @stream_krk "https://hoktastream1.webcamera.pl/krakow_cam_9a3b91/krakow_cam_9a3b91.stream/chunks.m3u8"
 
   def start_link(opts \\ []) do
     GenServer.start_link(__MODULE__, opts)

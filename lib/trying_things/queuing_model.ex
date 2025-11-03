@@ -1,7 +1,7 @@
 defmodule QueuingModel do
   use GenServer
 
-  @stream_rome_url "https://hd-auth.skylinewebcams.com/live.m3u8?a=sinpe3sum702opihqi62bpsun2"
+  # @stream_rome_url "https://hd-auth.skylinewebcams.com/live.m3u8?a=sinpe3sum702opihqi62bpsun2"
   # @stream_url "https://hd-auth.skylinewebcams.com/live.m3u8?a=sinpe3sum702opihqi62bpsun2"
   # @stream_usa "https://videos-3.earthcam.com/fecnetwork/30316.flv/playlist.m3u8"
   # @stream_usa "https://videos-3.earthcam.com/fecnetwork/30316.flv/playlist.m3u8?t=FIls8yQUTSX87Ze99E%2BkIl5pKNHChXU%2BpRnPMbD1uctLu2gJxxqwOFwJmkzeiYFP&td=202510140812"

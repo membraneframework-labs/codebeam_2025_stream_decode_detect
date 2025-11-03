@@ -1,7 +1,7 @@
 defmodule Demos.BoomboxWithYOLO.Elixir do
   def demo() do
     hls_url =
-      "https://hd-auth.skylinewebcams.com/live.m3u8?a=rud0i6qs0m1a4c11trrsbie6s4"
+      "https://hd-auth.skylinewebcams.com/live.m3u8?a=m5pmg11lptebbkutkcv555mrh7"
 
     {:ok, gen_server} = __MODULE__.GenServer.start_link()
 
