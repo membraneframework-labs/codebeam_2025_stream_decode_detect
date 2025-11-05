@@ -1,4 +1,12 @@
 defmodule Demos.BoomboxWithYOLO.Elixir do
+  @moduledoc """
+  To run this demo, you have to
+   - make sure that HLS playlist address is valid
+   - download ONNX model and classes data so that paths used in
+     `Demos.BoomboxWithYOLO.Elixir.GenServer.init/1` are correct
+     (follow instructions from https://github.com/poeticoding/yolo_elixir/blob/main/examples/yolox.livemd#download-yolox-model)
+  """
+
   def demo() do
     hls_url =
       "https://hd-auth.skylinewebcams.com/live.m3u8?a=m5pmg11lptebbkutkcv555mrh7"
