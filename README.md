@@ -3,7 +3,7 @@
 **How to run it**
 
 To run this demo, you have to
- - make sure that HLS playlist address used in [Demos.BoomboxWithYOLO.Elixir.demo/0](https://github.com/membraneframework-labs/codebeam_2025_stream_decode_detect/blob/master/lib/demos/boombox_with_yolo/elixir.ex) is valid
+ - make sure that HLS playlist address used in [Demos.BoomboxWithYOLO.Elixir.demo/0]([https://github.com/membraneframework-labs/codebeam_2025_stream_decode_detect/blob/master/lib/demos/boombox_with_yolo/elixir.ex](https://github.com/membraneframework-labs/codebeam_2025_stream_decode_detect/blob/26fdcede26cb5ec482c4331d5098aa61f0afcc98/lib/demos/boombox_with_yolo/elixir.ex#L12)) is valid
  - download ONNX model and classes data so that paths used is `Demos.BoomboxWithYOLO.Elixir.GenServer.init/1` are correct (follow instructions from https://github.com/poeticoding/yolo_elixir/blob/main/examples/yolox.livemd#download-yolox-model)
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
